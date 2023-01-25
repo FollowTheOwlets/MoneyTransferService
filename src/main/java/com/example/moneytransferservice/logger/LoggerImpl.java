@@ -7,11 +7,11 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
-public class Logger implements LoggerI {
-    private static LoggerI instance = null;
+public class LoggerImpl implements Logger {
+    private static Logger instance = null;
     private FileWriter writer;
 
-    private Logger() {
+    private LoggerImpl() {
         try {
             writer = new FileWriter("log.txt", true);
         } catch (IOException e) {
@@ -19,9 +19,9 @@ public class Logger implements LoggerI {
         }
     }
 
-    public static LoggerI getInstance() {
+    public static Logger getInstance() {
         if (instance == null) {
-            instance = new Logger();
+            instance = new LoggerImpl();
         }
         return instance;
     }
