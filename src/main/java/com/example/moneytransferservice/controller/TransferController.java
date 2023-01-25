@@ -9,7 +9,7 @@ import com.example.moneytransferservice.service.TransferService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController("/")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "https://serp-ya.github.io/card-transfer/", allowedHeaders = "*")
 public class TransferController {
     private TransferService transferService;
 
@@ -19,13 +19,11 @@ public class TransferController {
     }
 
     @PostMapping(path = "transfer")
-    @ResponseBody()
     public OperationResponse doTransfer(@RequestBody Transfer transfer) {
         return transferService.doTransfer(transfer);
     }
 
     @PostMapping(path = "confirmOperation")
-    @ResponseBody()
     public OperationResponse confirmOperation(@RequestBody ConfirmInfo info) {
         return transferService.confirmOperation(info);
     }
