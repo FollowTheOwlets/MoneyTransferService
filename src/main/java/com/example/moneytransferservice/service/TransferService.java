@@ -2,8 +2,8 @@ package com.example.moneytransferservice.service;
 
 import com.example.moneytransferservice.exception.ErrorTransferOrConfirmException;
 import com.example.moneytransferservice.exception.InvalidDataException;
+import com.example.moneytransferservice.logger.LoggerImpl;
 import com.example.moneytransferservice.logger.Logger;
-import com.example.moneytransferservice.logger.LoggerI;
 import com.example.moneytransferservice.model.ConfirmInfo;
 import com.example.moneytransferservice.model.OperationResponse;
 import com.example.moneytransferservice.model.Transfer;
@@ -19,11 +19,11 @@ import java.time.format.FormatStyle;
 public class TransferService {
 
     private TransferRepository transferRepository;
-    private LoggerI logger;
+    private Logger logger;
 
     public TransferService(TransferRepository transferRepository) {
         this.transferRepository = transferRepository;
-        logger = Logger.getInstance();
+        logger = LoggerImpl.getInstance();
     }
 
     public OperationResponse doTransfer(Transfer transfer) {
