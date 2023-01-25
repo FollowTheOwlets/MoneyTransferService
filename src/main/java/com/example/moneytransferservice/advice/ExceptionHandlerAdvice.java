@@ -2,8 +2,8 @@ package com.example.moneytransferservice.advice;
 
 import com.example.moneytransferservice.exception.ErrorTransferOrConfirmException;
 import com.example.moneytransferservice.exception.InvalidDataException;
+import com.example.moneytransferservice.logger.LoggerImpl;
 import com.example.moneytransferservice.logger.Logger;
-import com.example.moneytransferservice.logger.LoggerI;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,11 +13,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @RestControllerAdvice
 public class ExceptionHandlerAdvice {
-    LoggerI logger;
+    Logger logger;
     AtomicInteger errorId;
 
     public ExceptionHandlerAdvice() {
-        logger = Logger.getInstance();
+        logger = LoggerImpl.getInstance();
         errorId = new AtomicInteger(0);
     }
 
