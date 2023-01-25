@@ -8,7 +8,7 @@ import com.example.moneytransferservice.repository.TransferRepository;
 import com.example.moneytransferservice.service.TransferService;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/")
+@RestController()
 @CrossOrigin(origins = "https://serp-ya.github.io/card-transfer/", allowedHeaders = "*")
 public class TransferController {
     private TransferService transferService;
@@ -18,12 +18,12 @@ public class TransferController {
         this.transferService = new TransferService(repository);
     }
 
-    @PostMapping(path = "transfer")
+    @PostMapping("transfer")
     public OperationResponse doTransfer(@RequestBody Transfer transfer) {
         return transferService.doTransfer(transfer);
     }
 
-    @PostMapping(path = "confirmOperation")
+    @PostMapping("confirmOperation")
     public OperationResponse confirmOperation(@RequestBody ConfirmInfo info) {
         return transferService.confirmOperation(info);
     }
