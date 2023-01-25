@@ -9,13 +9,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class TransferRepository {
-    private Map<String, TransferState> transferStateMap;
-    private Map<String, Transfer> transferList;
+    private ConcurrentMap<String, TransferState> transferStateMap;
+    private ConcurrentMap<String, Transfer> transferList;
     private AtomicInteger id;
 
     public TransferRepository() {
-        this.transferStateMap = new HashMap<>();
-        this.transferList = new HashMap<>();
+        this.transferStateMap = new ConcurrentHashMap<>();
+        this.transferList = new ConcurrentHashMap<>();
         id = new AtomicInteger(0);
     }
 
